@@ -7,7 +7,9 @@ To begin:
 mkdir Tools Projects &&
 
 # Generate ssh key.
-ssh-keygen -t rsa -b 4096 &&
+prinf "\nEnter your email address: " &&
+read EMAIL &&
+ssh-keygen -t rsa -b 4096 -C "$EMAIL" &&
 eval "$(ssh-agent -s)" &&
 ssh-add ~/.ssh/id_rsa &&
 
@@ -16,6 +18,12 @@ printf "\nCreate a new ssh key in github with the following public key:\n\n" &&
 cat ~/.ssh/id_rsa.pub &&
 printf "\nHit enter to proceed." &&
 read enter &&
+
+# Confgigure git
+git config --global user.email $EMAIL &&
+prinf "\nEnter GitHub username: " &&
+read GHUSER &&
+git config --global user.name $GHUSER &&
 
 # Clone Setup repo and execute setup script.
 sudo apt-get install git &&
