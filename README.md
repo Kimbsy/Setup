@@ -23,7 +23,7 @@ cat ~/.ssh/id_rsa.pub &&
 printf "\nHit enter to proceed." &&
 read enter &&
 
-# Confgigure git
+# Configure git
 git config --global user.email $EMAIL &&
 printf "\nEnter GitHub username: " &&
 read GHUSER &&
