@@ -3,11 +3,15 @@ Repo for setting up a new Linux installation.
 
 To begin:
 ```bash
+
+# Install git.
+sudo apt-get install git
+
 # Create required directories.
-mkdir Tools Projects &&
+mkdir ~/Tools ~/Projects &&
 
 # Generate ssh key.
-prinf "\nEnter your email address: " &&
+printf "\nEnter your email address: " &&
 read EMAIL &&
 ssh-keygen -t rsa -b 4096 -C "$EMAIL" &&
 eval "$(ssh-agent -s)" &&
@@ -21,12 +25,12 @@ read enter &&
 
 # Confgigure git
 git config --global user.email $EMAIL &&
-prinf "\nEnter GitHub username: " &&
+printf "\nEnter GitHub username: " &&
 read GHUSER &&
 git config --global user.name $GHUSER &&
 
 # Clone Setup repo and execute setup script.
 sudo apt-get install git &&
-git clone git@github.com:Kimbsy/Setup.git Tools/Setup &&
-sudo Tools/Setup/./setup.sh
+git clone git@github.com:Kimbsy/Setup.git ~/Tools/Setup &&
+sudo ~/Tools/Setup/./setup.sh
 ```
