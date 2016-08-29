@@ -31,6 +31,6 @@ git config --global user.name $GHUSER &&
 
 # Clone Setup repo and execute setup script.
 sudo apt-get install git &&
-git clone git@github.com:Kimbsy/Setup.git ~/Tools/Setup &&
-sudo ~/Tools/Setup/./setup.sh
+git clone git@github.com:Kimbsy/Setup.git ~/Projects/Setup &&
+sudo ~/Projects/Setup/./setup.sh
 ```

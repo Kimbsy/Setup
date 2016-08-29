@@ -11,7 +11,7 @@ sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean
 
 # Install software.
-sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator
+sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator gparted
 
 # Clone repos
 git clone git@github.com:Kimbsy/dotfiles.git ~/Projects/dotfiles
