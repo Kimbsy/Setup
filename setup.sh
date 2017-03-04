@@ -21,11 +21,14 @@ if [ ! -f "$ssh_key" ]; then
     ssh-add ~/.ssh/id_rsa &&
 
     # Add ssh key to git.
-    printf "\nCreate a new ssh key in github with the following public key:\n\n" &&
-    cat "$ssh_key" &&
-    printf "\nHit enter to proceed." &&
-    read enter
+    printf "\nCreate a new ssh key in GitHub with the following public key:\n\n" &&
+    cat "$ssh_key"
+else
+    printf "\nSSH key $ssh_key already exists. Ensure key is registered in GitHub.\n\n"
 fi
+
+printf "\nHit enter to proceed." &&
+read enter &&
 
 # Configure git
 
