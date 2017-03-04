@@ -12,8 +12,8 @@ mkdir -p ~/Tools ~/Projects &&
 
 # Generate ssh key.
 printf "\nEnter your email address: " &&
-read EMAIL &&
-ssh-keygen -t rsa -b 4096 -C "$EMAIL" &&
+read email &&
+ssh-keygen -t rsa -b 4096 -C "$email" &&
 eval "$(ssh-agent -s)" &&
 ssh-add ~/.ssh/id_rsa &&
 
@@ -24,10 +24,10 @@ printf "\nHit enter to proceed." &&
 read enter &&
 
 # Configure git
-git config --global user.email $EMAIL &&
+git config --global user.email $email &&
 printf "\nEnter GitHub username: " &&
-read GHUSER &&
-git config --global user.name $GHUSER &&
+read gh_username &&
+git config --global user.name $gh_username &&
 
 # Clone Setup repo and execute setup script.
 git clone git@github.com:Kimbsy/Setup.git ~/Projects/Setup &&
@@ -47,7 +47,7 @@ git clone git@github.com:Kimbsy/dotfiles.git ~/Projects/dotfiles &&
 # Install functions and aliases from dotfiles repo.
 cd ~/Projects/dotfiles/ &&
 ./install.sh ~/.bashrc &&
-cd &&
+cd - &&
 source ~/.bashrc &&
 
 # Configure settings.
