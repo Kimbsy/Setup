@@ -10,30 +10,41 @@ sudo apt-get install git &&
 # Create required directories.
 mkdir -p ~/Tools ~/Projects &&
 
-# Generate ssh key.
-printf "\nEnter your email address: " &&
-read email &&
-ssh-keygen -t rsa -b 4096 -C "$email" &&
-eval "$(ssh-agent -s)" &&
-ssh-add ~/.ssh/id_rsa &&
+# Check if ssh key exists.
+ssh_key="~/.ssh/id_rsa.pub"
+if [ ! -f "$ssh_key" ]; then
+    # Generate ssh key.
+    printf "\nEnter your email address: " &&
+    read email &&
+    ssh-keygen -t rsa -b 4096 -C "$email" &&
+    eval "$(ssh-agent -s)" &&
+    ssh-add ~/.ssh/id_rsa &&
 
-# Add ssh key to git.
-printf "\nCreate a new ssh key in github with the following public key:\n\n" &&
-cat ~/.ssh/id_rsa.pub &&
-printf "\nHit enter to proceed." &&
-read enter &&
+    # Add ssh key to git.
+    printf "\nCreate a new ssh key in github with the following public key:\n\n" &&
+    cat "$ssh_key" &&
+    printf "\nHit enter to proceed." &&
+    read enter &&
+fi
 
 # Configure git
+
+    # @TODO: check if git is configured already?
+
 git config --global user.email $email &&
 printf "\nEnter GitHub username: " &&
 read gh_username &&
 git config --global user.name $gh_username &&
 
-# Clone Setup repo and execute setup script.
-git clone git@github.com:Kimbsy/Setup.git ~/Projects/Setup &&
+# Check if Setup repo exists.
+setup_repo="~/Projects/Setup"
+if [ ! -d "$setup_repo" ]; then
+    # Clone Setup repo.
+    git clone git@github.com:Kimbsy/Setup.git "$setup_repo" &&
+fi
 
 # Add repositories.
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3 && # Sublime Text 3
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-3 &&
 
 # Update apt.
 sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean &&
