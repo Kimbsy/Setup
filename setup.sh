@@ -25,6 +25,7 @@ if [ ! -f "$ssh_key" ]; then
     cat "$ssh_key"
 else
     printf "\nSSH key $ssh_key already exists. Ensure key is registered in GitHub.\n\n"
+    cat "$ssh_key"
 fi
 
 printf "\nHit enter to proceed." &&
