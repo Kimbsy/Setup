@@ -24,7 +24,7 @@ if [ ! -f "$ssh_key" ]; then
     printf "\nCreate a new ssh key in github with the following public key:\n\n" &&
     cat "$ssh_key" &&
     printf "\nHit enter to proceed." &&
-    read enter &&
+    read enter
 fi
 
 # Configure git
