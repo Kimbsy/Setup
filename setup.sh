@@ -39,9 +39,6 @@ printf "\nHit enter to proceed."
 read enter
 
 # Configure git.
-
-    # @TODO: check if git is configured already?
-
 git config --global user.email $email
 printf "\nEnter GitHub username [Kimbsy]: "
 read gh_username
@@ -56,8 +53,8 @@ sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autore
 
 # Install software.
 sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator gparted
+
 # @TODO: install more software:
-#
 
 # Install Google Chrome.
 if [ ! -n "$(type -t google-chrome-stable)" ] && [ ! "$(type -t google-chrome-stable)" = function ]; then
@@ -68,8 +65,8 @@ if [ ! -n "$(type -t google-chrome-stable)" ] && [ ! "$(type -t google-chrome-st
     cd -
 fi
 
-# @TODO: Remove unwanted software.
-
+# Remove unwanted software.
+sudo apt remove -y firefox aisleriot gnome-sudoku libreoffice-impress libreoffice-draw gnome-mahjongg gnome-mines onboard gnome-orca thunderbird
 
 # Clone repos.
 setup_repo="/home/$u_username/Projects/Setup"
@@ -88,9 +85,10 @@ fi
 # Configure settings.
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 
-# @TODO: implement setting changes for:
+# @TODO: configure settings for:
 # screen timeout
-# launcher autohide
+# launch bar autohide
+# unlock programs from launch bar
 #
 
 # Install functions and aliases from dotfiles repo.
