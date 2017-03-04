@@ -55,7 +55,7 @@ sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean
 
 # Install software.
-sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator gparted meld
+sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator gparted meld unity-tweak-tool
 
 # Install Google Chrome.
 if [ ! -n "$(type -t google-chrome-stable)" ] && [ ! "$(type -t google-chrome-stable)" = function ]; then
@@ -79,18 +79,14 @@ if [ ! -d "$dotfiles_repo" ]; then
     git clone git@github.com:Kimbsy/dotfiles.git "$dotfiles_repo"
 fi
 
-# @TODO: import settings for sublime, terminator
-
 # Configure ubuntu settings.
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+gsettings set org.gnome.desktop.session idle-delay 0
 
-# @TODO: configure settings for:
-# screen timeout
-# launch bar autohide
-# unlock programs from launch bar
-# make nemo default file browser
-# set nemo ~/Tools and ~/Projects shortcuts
-# keyboard shortcuts
+# Make nemo default file browser.
+xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
 # Install functions and aliases from dotfiles repo.
 search_term="# Functions from Kimbsy/dotfiles repo."
