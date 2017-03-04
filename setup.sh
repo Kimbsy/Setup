@@ -19,6 +19,9 @@ sudo apt-get install git
 # Create required directories.
 mkdir -p "/home/$u_username/Tools" "/home/$u_username/Projects"
 
+# Remove unwanted directories.
+rm -rf "/home/$u_username/Templates" "/home/$u_username/Examples" "/home/$u_username/Public" "/home/$u_username/Music"
+
 # Check if ssh key exists.
 ssh_key="/home/$u_username/.ssh/id_rsa.pub"
 if [ ! -f "$ssh_key" ]; then
@@ -52,9 +55,7 @@ sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo apt-get -y update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean
 
 # Install software.
-sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator gparted
-
-# @TODO: install more software:
+sudo apt-get install -y vim tree htop lm-sensors sublime-text-installer vlc nemo openjdk-8-jdk terminator gparted meld
 
 # Install Google Chrome.
 if [ ! -n "$(type -t google-chrome-stable)" ] && [ ! "$(type -t google-chrome-stable)" = function ]; then
@@ -71,25 +72,25 @@ sudo apt remove -y firefox aisleriot gnome-sudoku libreoffice-impress libreoffic
 # Clone repos.
 setup_repo="/home/$u_username/Projects/Setup"
 if [ ! -d "$setup_repo" ]; then
-    # Clone Setup repo.
     git clone git@github.com:Kimbsy/Setup.git "$setup_repo"
 fi
 dotfiles_repo="/home/$u_username/Projects/dotfiles"
 if [ ! -d "$dotfiles_repo" ]; then
-    # Clone dotfiles repo.
     git clone git@github.com:Kimbsy/dotfiles.git "$dotfiles_repo"
 fi
 
-# @TODO: get settings for sublime, terminator
+# @TODO: import settings for sublime, terminator
 
-# Configure settings.
+# Configure ubuntu settings.
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 
 # @TODO: configure settings for:
 # screen timeout
 # launch bar autohide
 # unlock programs from launch bar
-#
+# make nemo default file browser
+# set nemo ~/Tools and ~/Projects shortcuts
+# keyboard shortcuts
 
 # Install functions and aliases from dotfiles repo.
 search_term="# Functions from Kimbsy/dotfiles repo."
