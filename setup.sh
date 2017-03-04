@@ -40,7 +40,7 @@ git config --global user.name $gh_username &&
 setup_repo="~/Projects/Setup"
 if [ ! -d "$setup_repo" ]; then
     # Clone Setup repo.
-    git clone git@github.com:Kimbsy/Setup.git "$setup_repo" &&
+    git clone git@github.com:Kimbsy/Setup.git "$setup_repo"
 fi
 
 # Add repositories.
