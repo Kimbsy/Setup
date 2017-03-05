@@ -14,7 +14,7 @@ read email
 email=${email:-}
 
 # Install git.
-sudo apt-get install git
+sudo apt-get install -y git
 
 # Create required directories.
 mkdir -p "/home/$u_username/Tools" "/home/$u_username/Projects"
