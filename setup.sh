@@ -67,7 +67,7 @@ if [ ! -n "$(type -t google-chrome-stable)" ] && [ ! "$(type -t google-chrome-st
 fi
 
 # Remove unwanted software.
-sudo apt remove -y firefox aisleriot gnome-sudoku libreoffice-impress libreoffice-draw gnome-mahjongg gnome-mines onboard gnome-orca thunderbird
+sudo apt remove -y firefox aisleriot gnome-sudoku libreoffice-impress libreoffice-draw gnome-mahjongg gnome-mines onboard gnome-orca thunderbird mpv
 
 # Clone repos.
 setup_repo="/home/$u_username/Projects/Setup"
